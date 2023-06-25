@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -55,12 +55,18 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const Themechanger = () => {
+const Themechanger = ({ setThemes, themes }) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const light = theme === "light";
   const [check, setCheck] = useState(!light ? true : false);
   // useEffect only runs on the client, so now we can safely show the UI
+
+  useEffect(() => {
+    setThemes(theme);
+
+    console.log(theme);
+  }, [theme, setThemes]);
 
   useEffect(() => {
     setMounted(true);
