@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import "./components/loading.css";
 import LayoutProvider from "./components/LayoutProvider.jsx";
 
 export const metadata = {
@@ -10,9 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, padding: 0 }}>
         <LayoutProvider>
-          <main>{children}</main>
+          <main style={{ margin: 0, padding: 0 }}>{children}</main>
         </LayoutProvider>
       </body>
     </html>
